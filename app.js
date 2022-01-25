@@ -11,7 +11,7 @@
         })
     })
 
-    document.getElementById('btn').addEventListener('click', (evt) => {
+    document.getElementById('btn').addEventListener('click', () => {
         
         this.createHumanObj();
         
@@ -29,16 +29,20 @@
         const stegoSaurus = tileArr[4];
         tileArr.push(stegoSaurus);
         tileArr[4] = this.humanObj;
-        const gridContainer = document.getElementById("grid");
+        const gridContainer = document.getElementById('grid');
 
-        const tiles = tileArr.map(tileObj => {
-            const TileDiv = document.createElement("div");
-            const tileName = document.createElement("h3");
-            const tileImg = document.createElement("img");
-            const tileFact = document.createElement("p");
+        tileArr.map(tileObj => {
+            const TileDiv = document.createElement('div');
+            const tileName = document.createElement('h3');
+            const tileImg = document.createElement('img');
+            const tileFact = document.createElement('p');
 
             if (tileObj.name || tileObj.species) {
                 tileName.innerText = tileObj.name ? tileObj.name : tileObj.species;
+            }
+
+            if (tileObj.name) {
+                tileImg.src = 'images/human.png';
             }
             
             if (tileObj.species) {
@@ -55,7 +59,7 @@
             
                 }
             }
-            TileDiv.className = "grid-item";
+            TileDiv.className = 'grid-item';
             TileDiv.append(tileName, tileImg, tileFact);
             gridContainer.appendChild(TileDiv);
             return TileDiv;
